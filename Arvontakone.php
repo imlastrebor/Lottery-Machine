@@ -32,23 +32,45 @@ $playerNumbers = array();
 //Ehtona on että submit-painiketta on painettu
 if (isset($_POST['submit'])) {
 
-  //Taulukkomuuttuja pilkotaan yksittäisiin osiin
+  //Taulukkomuuttuja $numbers pilkotaan yksittäisiin osiin
   foreach($numbers as $number) {
 
-    //Yksittäiset osat sijoitetaan uuteen taulukkomuuttujaan $playerNumbers.
+    //Pelaajan antamat luvut sijoitetaan uuteen taulukkomuuttujaan $playerNumbers.
     array_push($playerNumbers, $_POST[$number]);
   }
 
   // Tarkastetaan onko pelaaja antanut samoja lukuja.
-  
+
   //Poistetaan moneen kertaan esiintyvät luvut ja tarkastetaan onko jäljelle jääneiden määrä < 6.
   if (count(array_unique($playerNumbers)) < 6 ) {
     echo "Don't choose multiple same numbers.";
   }
-  else {
-    echo "you almost win";
-  }
+
+  //DELETE THIS, just for testing
+  echo "Player's numbers";
+  print_r($playerNumbers);
+  echo "<br>";
 
 }
+  //Taulukkomuuttuja, johon on syötetään koneen luvut
+    $randomNumbers = array();
+
+  //Syötetään $randomNumbers taulukkoon satunnaisia lukuja kunnes sieltä löytyy 6 toisistaan eroavaa lukua.
+    while (count(array_unique($randomNumbers)) < 6)  {
+      array_push($randomNumbers, rand(1,30));
+    }
+
+
+    //DELETE THIS, just for testing
+    echo "All machine numbers";
+    print_r($randomNumbers);
+    echo "<br>";
+    echo "Unique count";
+  echo  count(array_unique($randomNumbers));
+  echo "Unique machine numbers";
+print_r(array_unique($randomNumbers));
+
+
+
 
  ?>
