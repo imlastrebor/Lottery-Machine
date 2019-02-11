@@ -45,13 +45,9 @@ if (isset($_POST['submit'])) {
   if (count(array_unique($playerNumbers)) < 6 ) {
     echo "Don't choose multiple same numbers.";
   }
+else {
 
-  //DELETE THIS, just for testing
-  echo "Player's numbers";
-  print_r($playerNumbers);
-  echo "<br>";
 
-}
   //Taulukkomuuttuja, johon on syötetään koneen luvut
     $randomNumbers = array();
 
@@ -60,16 +56,44 @@ if (isset($_POST['submit'])) {
       array_push($randomNumbers, rand(1,30));
     }
 
+  //Luodaan muuttuja, jossa verrataan taulukoita $randomNumbers ja $playerNumbers ja poimitaan sieltä luvut, jotka löytyvät molemmista.
+    $resultsCompare = array_intersect(array_unique($randomNumbers), $playerNumbers);
+  //Ottaa muuttujasta löytyvät arvot ja tekee niistä stringin.
+    $results = implode(", ", $resultsCompare);
 
+  //Lasketaan saatujen osumien määrä.
+    count($resultsCompare);
+
+    //Jos saatujen osumien määrä on < 1, näytetään alla oleva teksti.
+    if (count($resultsCompare) < 1) {
+      echo "Valitettavasti et saanut yhtään oikein!";
+    }
+    //Jos saatujen osumien määrä on  1, näytetään alla oleva teksti.
+    elseif (count($resultsCompare) == 1) {
+      echo "Yksi oikein: " . $results;
+    }
+    //Jos saatujen osumien määrä on < 1, näytetään alla oleva teksti.
+    else {
+      echo "Oikeat numerot: " . $results;
+    }
+    echo "<br>" . "<br>";
+  }
+}
+
+
+
+//DELETE THIS, just for testing
+
+echo "<br>" . "<br>" . "Player's numbers" . "<br>";
+print_r($playerNumbers);
+echo "<br>";
     //DELETE THIS, just for testing
-    echo "All machine numbers";
+    echo "<br>" . "<br>" . "All machine numbers" . "<br>";
     print_r($randomNumbers);
-    echo "<br>";
-    echo "Unique count";
+    echo "<br>" . "Unique count" . "<br>";
   echo  count(array_unique($randomNumbers));
-  echo "Unique machine numbers";
+  echo "<br>" . "Unique machine numbers" . "<br>";
 print_r(array_unique($randomNumbers));
-
 
 
 
