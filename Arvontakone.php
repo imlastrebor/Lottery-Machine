@@ -64,19 +64,29 @@ else {
   //Lasketaan saatujen osumien määrä.
     count($resultsCompare);
 
-    //Jos saatujen osumien määrä on < 1, näytetään alla oleva teksti.
+    //Luodaan ehdot joilla saadaan tulostettua eri tekstejä tulosten perusteella.
     if (count($resultsCompare) < 1) {
-      echo "Valitettavasti et saanut yhtään oikein!";
+      echo "Oh no! No win...";
     }
-    //Jos saatujen osumien määrä on  1, näytetään alla oleva teksti.
     elseif (count($resultsCompare) == 1) {
-      echo "Yksi oikein: " . $results;
+      echo "You got: " . $results .  "<br>" . " It's better than nothing!";
     }
-    //Jos saatujen osumien määrä on < 1, näytetään alla oleva teksti.
-    else {
-      echo "Oikeat numerot: " . $results;
+    elseif (count($resultsCompare) == 2) {
+      echo "You got: " . $results .  "<br>" . " Nice!";
     }
-    echo "<br>" . "<br>";
+    elseif (count($resultsCompare) == 3) {
+      echo "You got: " . $results .  "<br>" . " Bingo!";
+    }
+    elseif (count($resultsCompare) == 4) {
+      echo "You got: " . $results .  "<br>" . " Amazing!";
+    }
+    elseif (count($resultsCompare) == 5) {
+      echo "You got: " . $results .  "<br>" . " BIG MONEY!";
+    }
+    elseif (count($resultsCompare) == 6) {
+      echo "You got: " . $results .  "<br>" . " Quit your job!";
+    }
+
   }
 }
 
