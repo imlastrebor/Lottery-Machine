@@ -10,14 +10,16 @@
   <body>
 
 
-    <?php   if (!isset($_POST['submit'])) {
-              echo "<h2 class=\"otsikko\">Lottery machine</h2>";
-              echo "<h3>Select six numbers and click play</h3>";
-            }
+    <?php // Tulostetaan otsikko isona ja ohjeteksti jos submit painiketta ei ole painettu
+      if (!isset($_POST['submit'])) {
+          echo "<h2 class=\"otsikko\">Lottery machine</h2>";
+          echo "<h3>Select six numbers and click play</h3>";
+      }
+      //Näytetään otsikko pienellä jos submit painiketta on painettu
+      if (isset($_POST['submit'])) {
+          echo "<h2 class=\"otsikkoPieni\">Lottery machine</h2>";
+      } ?>
 
-            if (isset($_POST['submit'])) {
-              echo "<h2 class=\"otsikkoPieni\">Lottery machine</h2>";
-            } ?>
 <form class="numbersForm" action="arvontakone.php" method="post">
 
   <input type="number" name="numberOne" min="1" max="30" required value="<?php echo isset($_POST['numberOne']) ? $_POST['numberOne'] : '' ?>" >
@@ -49,8 +51,6 @@
   //Ehtona on että submit-painiketta on painettu
   if (isset($_POST['submit'])) {
 
-
-
     //Taulukkomuuttuja $numbers pilkotaan yksittäisiin osiin
     foreach($numbers as $number) {
 
@@ -58,9 +58,7 @@
       array_push($playerNumbers, $_POST[$number]);
     }
 
-    // Tarkastetaan onko pelaaja antanut samoja lukuja.
-
-    //Poistetaan moneen kertaan esiintyvät luvut ja tarkastetaan onko jäljelle jääneiden määrä < 6.
+    //Poistetaan moneen kertaan esiintyvät luvut ja tarkastetaan onko jäljelle jääneiden määrä < 6. Jos on niin tulostetaan alla oleva teksti
     if (count(array_unique($playerNumbers)) < 6 ) {
       echo "<h3>Don't choose multiple same numbers.</h3>";
     }
