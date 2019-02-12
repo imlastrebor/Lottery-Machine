@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   </head>
   <body>
+
+
+    <?php   if (!isset($_POST['submit'])) {
+              echo "<h2 class=\"otsikko\">Lottery machine</h2>";
+              echo "<h3>Select six numbers and click play</h3>";
+            }
+
+            if (isset($_POST['submit'])) {
+              echo "<h2 class=\"otsikkoPieni\">Lottery machine</h2>";
+            } ?>
 <form class="numbersForm" action="arvontakone.php" method="post">
 
   <input type="number" name="numberOne" min="1" max="30" required value="<?php echo isset($_POST['numberOne']) ? $_POST['numberOne'] : '' ?>" >
@@ -34,8 +45,11 @@
   //Tyhjä taulukkomuuttuja
   $playerNumbers = array();
 
+
   //Ehtona on että submit-painiketta on painettu
   if (isset($_POST['submit'])) {
+
+
 
     //Taulukkomuuttuja $numbers pilkotaan yksittäisiin osiin
     foreach($numbers as $number) {
@@ -48,7 +62,7 @@
 
     //Poistetaan moneen kertaan esiintyvät luvut ja tarkastetaan onko jäljelle jääneiden määrä < 6.
     if (count(array_unique($playerNumbers)) < 6 ) {
-      echo "Don't choose multiple same numbers.";
+      echo "<h3>Don't choose multiple same numbers.</h3>";
     }
 
     //Jos samoja lukuja ei löydy toteutetaan alla olevat asiat.
@@ -69,29 +83,29 @@
         $results = implode(", ", $resultsCompare);
 
       //Lasketaan saatujen osumien määrä.
-        count($resultsCompare);
+          echo "<h3> You got " . count($resultsCompare) . " right </h3>";
 
         //Luodaan ehdot joilla saadaan tulostettua eri tekstejä tulosten perusteella.
         if (count($resultsCompare) < 1) {
-          echo "<h2> Oh no! No win... </h2>";
+          echo "<h2> Oh no! <br> No win... </h2>";
         }
         elseif (count($resultsCompare) == 1) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> It's better than nothing!</h2>";
+          echo "<h3> Number: " . $results . "</h3><h2> Good!</h2>";
         }
         elseif (count($resultsCompare) == 2) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> Nice!</h2>";
+          echo "<h3> Numbers: " . $results . "</h3><h2> Nice!</h2>";
         }
         elseif (count($resultsCompare) == 3) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> Bingo!</h2>";
+          echo "<h3> Numbers: " . $results . "</h3><h2> Bingo!</h2>";
         }
         elseif (count($resultsCompare) == 4) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> Amazing!</h2>";
+          echo "<h3> Numbers: " . $results . "</h3><h2> Amazing!</h2>";
         }
         elseif (count($resultsCompare) == 5) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> BIG MONEY!</h2>";
+          echo "<h3> Numbers: " . $results . "</h3><h2> BIG MONEY!</h2>";
         }
         elseif (count($resultsCompare) == 6) {
-          echo "<h3> You got: " . $results .  "<br>" . "</h3><h2> Quit your job!</h2>";
+          echo "<h3> Numbers: " . $results . "</h3><h2> Quit your job!</h2>";
         }
     }
   }

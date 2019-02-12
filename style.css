@@ -1,24 +1,84 @@
 body{
-  background-color: red;
+  background-color: #011627;
+  font-family: 'Oswald', sans-serif;
+  overflow: hidden;
+}
+
+
+h2{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 3.8em;
+  color: #FF9F1C;
+  animation: spin 3s infinite;
+}
+@keyframes spin{
+  0%   {   transform: rotate3d(1, 1, 1, 0deg); }
+  40% {   transform: rotate3d(1, 1, 1, 40deg); }
+  50%  {  transform: rotate3d(1, 1, 1, 180deg); }
+  60% {   transform: rotate3d(1, 1, 1, 320deg); }
+  100% {   transform: rotate3d(1, 1, 1, 360deg); }
+}
+
+.otsikko{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 4em;
+  color: #FF9F1C;
+  animation: slide 3s infinite;
+}
+.otsikkoPieni{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  color: #FF9F1C;
+  animation: slide 3s infinite;
+}
+
+@keyframes slide{
+  0%   {   text-shadow: 3px 3px 0 #E71D36 , 4px 4px 0 #E71D36 , 5px 5px 0 #E71D36 , 6px 6px 0 #E71D36 , 7px 7px 0 #E71D36 ; }
+50%  {   text-shadow: -3px -3px 0 #E71D36 , -4px -4px 0 #E71D36 , -5px -5px 0 #E71D36 , -6px -6px 0 #E71D36 , -7px -7px 0 #E71D36 ; }
+100% {   text-shadow: 3px 3px 0 #E71D36 , 4px 4px 0 #E71D36 , 5px 5px 0 #E71D36 , 6px 6px 0 #E71D36 , 7px 7px 0 #E71D36 ; }
+}
+
+h3{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: #FF9F1C;
+  font-size: 1.7em;
+  text-shadow: 1px 1px 0 #E71D36 ;
 }
 
 .numbersForm{
   margin: auto;
   margin-top: 50px;
   width: 300px;
-  background-color: blue;
   text-align: center;
 }
 .numbersFormButton{
   margin: auto;
   width: 300px;
-  background-color: blue;
 }
 .resultBox{
   margin: auto;
   width: 300px;
-  background-color: green;
 }
 input[type=number], select, textarea{
-
+font-family: 'Oswald', sans-serif;
+font-size: 1em;
+color: #E6E8E6;
+background-color: #011627;
+border-radius: 5px;
+border: 1px solid #2EC4B6;
+padding: 0.2em;
+}
+input[type=submit]{
+font-family: 'Oswald', sans-serif;
+font-size: 1em;
+color: #E6E8E6;
+background-color: #011627;
+border-radius: 5px;
+border: 1px solid #2EC4B6;
+padding: 0.2em 0.8em;
+margin-top: 0.4em;
 }
