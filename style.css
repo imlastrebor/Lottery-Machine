@@ -48,6 +48,13 @@ h3{
   font-size: 1.7em;
   text-shadow: 1px 1px 0 #E71D36 ;
 }
+h4{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: #FF9F1C;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 0 #E71D36 ;
+}
 
 .numbersForm{
   margin: auto;
